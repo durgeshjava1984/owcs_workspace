@@ -101,7 +101,23 @@
    <groupId>org.codehaus.mojo</groupId>  
    <artifactId>exec-maven-plugin</artifactId>  
    <version>1.1.1</version>  
-   <executions>  
+   <executions>
+    <execution>  
+     <phase>package</phase>  
+     <goals>  
+      <goal>java</goal>  
+     </goals>  
+	  <configuration>
+		<mainClass>com.fatwire.csdt.client.main.CSDT</mainClass>
+		  <arguments>  
+		   <argument>http://localhost:7003/cs/ContentServer</argument>  
+		   <argument>username=fwadmin</argument>
+		   <argument>password=xceladmin</argument>
+		   <argument>resources=@SITE:*;@ROLE:*;@ASSET_TYPE:*;@TREETAB:*;@STARTMENU:*;@ALL_ASSETS:*</argument>
+		   <argument>cmd=import</argument>
+		  </arguments> 
+	  </configuration>  
+    </execution>   
 
      <execution>
         <id>runbatchfile</id>
