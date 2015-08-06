@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.owcs</groupId>
+  <artifactId>main_workspace</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Archetype - main_workspace</name>
+  <url>http://maven.apache.org</url>
+  <packaging>pom</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+    <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.5.3</version>
+        <configuration>
+          <descriptor>G:/automation/Sites/11.1.1.8.0/export/envision/java_workspace/src/main/java/com/owcs/assembly/assembly.xml</descriptor>
+        </configuration>
+        		<executions>
+				  <execution>
+					<id>make-assembly</id>
+                     <!-- bind to the packaging phase -->
+					<phase>package</phase> 
+					<goals>
+						<goal>single</goal>
+					</goals>
+				  </execution>
+				</executions>
+      			</plugin>			
+   <plugin>
+  <artifactId>maven-resources-plugin</artifactId>
+  <version>2.3</version>
+  <executions>
+    <execution>
+      <id>copy-prod-resources</id>
+      <phase>package</phase>
+      <goals>
+         <goal>copy-resources</goal>
+      </goals>
+      <configuration>
+        <!-- this is important -->
+        <overwrite>true</overwrite>
+        <!-- target -->
+        <outputDirectory>D:/Weblogic/user_projects/domains/CSAuthoring/CS/static</outputDirectory>
+        <resources>
+          <resource>
+            <!-- source -->
+            <directory>G:/automation/Sites/11.1.1.8.0/export/envision/main_workspace/target/main_workspace-0.0.1-SNAPSHOT-bundle/CS/static</directory>
+          </resource>
+        </resources>
+      </configuration>
+    </execution>
+    
+     <execution>
+      <id>copy-prod-resources-jar</id>
+      <phase>package</phase>
+      <goals>
+         <goal>copy-resources</goal>
+      </goals>
+      <configuration>
+        <!-- this is important -->
+        <overwrite>true</overwrite>
+        <!-- target -->
+        <outputDirectory>D:/Weblogic/user_projects/domains/CSAuthoring/CS/WEB-INF/lib</outputDirectory>
+        <resources>
+          <resource>
+            <!-- source -->
+            <directory>G:/automation/Sites/11.1.1.8.0/export/envision/main_workspace/target/main_workspace-0.0.1-SNAPSHOT-bundle/CS/WEB-INF/lib</directory>
+          </resource>
+        </resources>
+      </configuration>
+    </execution>
+    
+    
+    <execution>
+      <id>copy-prod-resources-export</id>
+      <phase>package</phase>
+      <goals>
+         <goal>copy-resources</goal>
+      </goals>
+      <configuration>
+        <!-- this is important -->
+        <overwrite>true</overwrite>
+        <!-- target -->
+        <outputDirectory>D:/OWCSAuthoring/sites/export/envision</outputDirectory>
+        <resources>
+          <resource>
+            <!-- source -->
+            <directory>G:/automation/Sites/11.1.1.8.0/export/envision/main_workspace/target/main_workspace-0.0.1-SNAPSHOT-bundle/ContentServer</directory>
+          </resource>
+        </resources>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+      		
+      		
+<plugin>  
+   <groupId>org.codehaus.mojo</groupId>  
+   <artifactId>exec-maven-plugin</artifactId>  
+   <version>1.1.1</version>  
+   <executions>  
+
+     <execution>
+        <id>runbatchfile</id>
+        <phase>package</phase>
+        <goals>
+          <goal>exec</goal>
+        </goals>
+    <configuration>
+      <executable>D:/Weblogic/wlserver_10.3/server/bin/DeploymentAutomation.cmd</executable>
+    </configuration>
+      </execution> 
+   </executions>  
+  </plugin>
+      			
+</plugins>
+    				
+  </build>
+    <dependencies>
+    	<dependency>
+    		<groupId>com.owcs</groupId>
+    		<artifactId>java_workspace</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>static</groupId>
+    		<artifactId>static_workspace</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+    		<type>war</type>
+    	</dependency>
+	   <dependency>
+	    <groupId>com.fatwire.csdt</groupId>
+	    <artifactId>csdt-client</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   <dependency>
+	    <groupId>org.jasig.cas</groupId>
+	    <artifactId>cas-client-core</artifactId>
+	    <version>3.1.9</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>commons-logging</groupId>
+	    <artifactId>commons-logging</artifactId>
+	    <version>1.1.1</version>
+	   </dependency>
+	   
+	    <dependency>
+	    <groupId>cs-core</groupId>
+	    <artifactId>cs-core</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	   	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.1.2</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpcore</artifactId>
+	    <version>4.1.2</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpmime</artifactId>
+	    <version>4.1.2</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>com.fatwire.wem.api</groupId>
+	    <artifactId>rest-api</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+   
+   		<dependency>
+	    <groupId>com.fatwire.security</groupId>
+	    <artifactId>sites-security</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	    <dependency>
+	    <groupId>spring</groupId>
+	    <artifactId>spring</artifactId>
+	    <version>2.5.5</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>com.fatwire.wem.sso</groupId>
+	    <artifactId>wem-sso-api</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>com.fatwire.wem.sso.cas</groupId>
+	    <artifactId>wem-sso-api-cas</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	   	<dependency>
+	    <groupId>com.fatwire.wem.sso.oam</groupId>
+	    <artifactId>wem-sso-api-oam</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   	<dependency>
+	    <groupId>j2ee</groupId>
+	    <artifactId>j2ee</artifactId>
+	    <version>1.4</version>
+	   </dependency>
+	   	<dependency>
+	   		<groupId>cs_workspace</groupId>
+	   		<artifactId>cs_workspace</artifactId>
+	   		<version>0.0.1-SNAPSHOT</version>
+	   		<type>pom</type>
+	   	</dependency>
+    </dependencies>
+    
+    
+    <modules>
+    	
+    	
+    	
+    	
+    	<module>../java_workspace</module>
+    	<module>../static_workspace</module>
+    	<module>../cs_workspace</module>
+    </modules>
+</project>
