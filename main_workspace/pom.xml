@@ -17,6 +17,7 @@
         <version>2.5.3</version>
         <configuration>
           <descriptor>G:/automation/Sites/11.1.1.8.0/export/envision/java_workspace/src/main/java/com/owcs/assembly/assembly.xml</descriptor>
+          
         </configuration>
         		<executions>
 				  <execution>
@@ -47,7 +48,7 @@
         <resources>
           <resource>
             <!-- source -->
-            <directory>G:/automation/Sites/11.1.1.8.0/export/envision/main_workspace/target/main_workspace-0.0.1-SNAPSHOT-bundle/CS/static</directory>
+            <directory>/target/main_workspace-0.0.1-SNAPSHOT-bundle/CS/static</directory>
           </resource>
         </resources>
       </configuration>
@@ -67,7 +68,7 @@
         <resources>
           <resource>
             <!-- source -->
-            <directory>G:/automation/Sites/11.1.1.8.0/export/envision/main_workspace/target/main_workspace-0.0.1-SNAPSHOT-bundle/CS/WEB-INF/lib</directory>
+            <directory>/target/main_workspace-0.0.1-SNAPSHOT-bundle/CS/WEB-INF/lib</directory>
           </resource>
         </resources>
       </configuration>
@@ -88,7 +89,7 @@
         <resources>
           <resource>
             <!-- source -->
-            <directory>G:/automation/Sites/11.1.1.8.0/export/envision/main_workspace/target/main_workspace-0.0.1-SNAPSHOT-bundle/ContentServer</directory>
+            <directory>/target/main_workspace-0.0.1-SNAPSHOT-bundle/ContentServer</directory>
           </resource>
         </resources>
       </configuration>

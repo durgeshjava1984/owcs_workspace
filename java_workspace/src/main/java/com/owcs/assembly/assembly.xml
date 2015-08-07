@@ -11,7 +11,7 @@
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<fileSets>
 		<fileSet>
-			<directory>G:/automation/Sites/11.1.1.8.0/export/envision/java_workspace/target</directory>
+			<directory>../java_workspace/target</directory>
 			<outputDirectory>CS/WEB-INF/lib</outputDirectory>
 			<includes>
                 <include>*.jar</include>
@@ -19,11 +19,11 @@
 		</fileSet>
 		
 		<fileSet>
-			<directory>G:/automation/Sites/11.1.1.8.0/export/envision/static_workspace/src/main/webapp/static</directory>
+			<directory>../static_workspace/src/main/webapp/static</directory>
 			<outputDirectory>CS/static</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>G:/automation/Sites/11.1.1.8.0/export/envision/cs_workspace</directory>
+			<directory>../cs_workspace</directory>
 			<outputDirectory>ContentServer/cs_workspace</outputDirectory>
 		</fileSet>
 	</fileSets>
