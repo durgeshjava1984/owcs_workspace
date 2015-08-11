@@ -17,6 +17,88 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+	    <groupId>com.fatwire.csdt</groupId>
+	    <artifactId>csdt-client</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   <dependency>
+	    <groupId>org.jasig.cas</groupId>
+	    <artifactId>cas-client-core</artifactId>
+	    <version>3.1.9</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>commons-logging</groupId>
+	    <artifactId>commons-logging</artifactId>
+	    <version>1.1.1</version>
+	   </dependency>
+	   
+	    <dependency>
+	    <groupId>cs-core</groupId>
+	    <artifactId>cs-core</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	   	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.1.2</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpcore</artifactId>
+	    <version>4.1.2</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpmime</artifactId>
+	    <version>4.1.2</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>com.fatwire.wem.api</groupId>
+	    <artifactId>rest-api</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+   
+   		<dependency>
+	    <groupId>com.fatwire.security</groupId>
+	    <artifactId>sites-security</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	    <dependency>
+	    <groupId>spring</groupId>
+	    <artifactId>spring</artifactId>
+	    <version>2.5.5</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>com.fatwire.wem.sso</groupId>
+	    <artifactId>wem-sso-api</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	   <dependency>
+	    <groupId>com.fatwire.wem.sso.cas</groupId>
+	    <artifactId>wem-sso-api-cas</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   
+	   	<dependency>
+	    <groupId>com.fatwire.wem.sso.oam</groupId>
+	    <artifactId>wem-sso-api-oam</artifactId>
+	    <version>11.1.1.8.0</version>
+	   </dependency>
+	   	<dependency>
+	    <groupId>j2ee</groupId>
+	    <artifactId>j2ee</artifactId>
+	    <version>1.4</version>
+	   </dependency>
+	
   </dependencies>
   
 </project>
