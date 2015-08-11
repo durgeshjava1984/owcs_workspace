@@ -23,24 +23,65 @@
 				  <execution>
 					<id>make-assembly</id>
                      <!-- bind to the packaging phase -->
-					<phase>package</phase> 
+					<phase>prepare-package</phase> 
 					<goals>
 						<goal>single</goal>
 					</goals>
 				  </execution>
 				</executions>
-      			</plugin>			
+      			</plugin>
+      			
+     <plugin>                                                         
+    <groupId>org.codehaus.gmaven</groupId>                       
+    <artifactId>groovy-maven-plugin</artifactId>                 
+    <version>2.0</version>                                       
+    <executions>                                                 
+        <execution>
+			<id>start-copy-resources</id>		
+            <phase>prepare-package</phase>                              
+            <goals>                                              
+                <goal>execute</goal>                             
+            </goals>                                             
+            <configuration>                                      
+                <source>                                         
+                    log.info('\033[1;32m\033')
+                    log.info('\033[1;32m=============================================\033')
+                    log.info('\033[1;32mCopy of static files and jars have been started...!!!\033')
+                    log.info('\033[1;32m=============================================\033[0m')
+                </source>                                        
+            </configuration>                                     
+        </execution>
+
+		<execution>
+			<id>complete-copy-resources</id>		
+            <phase>package</phase>                              
+            <goals>                                              
+                <goal>execute</goal>                             
+            </goals>                                             
+            <configuration>                                      
+                <source> 
+                    log.info('\033[1;32m\033')
+                    log.info('\033[1;32m=============================================\033')
+                    log.info('\033[1;32mCopy of static files and jars have been completed sucessfully...!!!\033')
+                    log.info('\033[1;32m=============================================\033[0m')
+
+                </source>                                        
+            </configuration>                                     
+        </execution>   		
+    </executions>                                                
+</plugin> 		
    <plugin>
   <artifactId>maven-resources-plugin</artifactId>
   <version>2.3</version>
   <executions>
     <execution>
-      <id>copy-prod-resources</id>
-      <phase>package</phase>
+      <id>copy-static-resources</id>
+      <phase>prepare-package</phase>
       <goals>
          <goal>copy-resources</goal>
       </goals>
       <configuration>
+      
         <!-- this is important -->
         <overwrite>true</overwrite>
         <!-- target -->
@@ -55,8 +96,8 @@
     </execution>
     
      <execution>
-      <id>copy-prod-resources-jar</id>
-      <phase>package</phase>
+      <id>copy-jar-resources</id>
+      <phase>prepare-package</phase>
       <goals>
          <goal>copy-resources</goal>
       </goals>
@@ -76,8 +117,8 @@
     
     
     <execution>
-      <id>copy-prod-resources-export</id>
-      <phase>package</phase>
+      <id>copy-csdt-resources</id>
+      <phase>prepare-package</phase>
       <goals>
          <goal>copy-resources</goal>
       </goals>
@@ -109,7 +150,7 @@
       <goal>java</goal>  
      </goals>  
 	  <configuration>
-		<mainClass>com.fatwire.csdt.client.main.CSDT</mainClass>
+		<mainClass>com.owcs.CSDTClient</mainClass>
 		  <arguments>  
 		   <argument>http://localhost:7003/cs/ContentServer</argument>  
 		   <argument>username=fwadmin</argument>
@@ -119,7 +160,6 @@
 		  </arguments> 
 	  </configuration>  
     </execution>   
-
      <execution>
         <id>runbatchfile</id>
         <phase>package</phase>
@@ -148,87 +188,6 @@
     		<version>0.0.1-SNAPSHOT</version>
     		<type>war</type>
     	</dependency>
-	   <dependency>
-	    <groupId>com.fatwire.csdt</groupId>
-	    <artifactId>csdt-client</artifactId>
-	    <version>11.1.1.8.0</version>
-	   </dependency>
-	   <dependency>
-	    <groupId>org.jasig.cas</groupId>
-	    <artifactId>cas-client-core</artifactId>
-	    <version>3.1.9</version>
-	   </dependency>
-	   
-	   <dependency>
-	    <groupId>commons-logging</groupId>
-	    <artifactId>commons-logging</artifactId>
-	    <version>1.1.1</version>
-	   </dependency>
-	   
-	    <dependency>
-	    <groupId>cs-core</groupId>
-	    <artifactId>cs-core</artifactId>
-	    <version>11.1.1.8.0</version>
-	   </dependency>
-	   
-	   	<dependency>
-	    <groupId>org.apache.httpcomponents</groupId>
-	    <artifactId>httpclient</artifactId>
-	    <version>4.1.2</version>
-	   </dependency>
-	   
-	   <dependency>
-	    <groupId>org.apache.httpcomponents</groupId>
-	    <artifactId>httpcore</artifactId>
-	    <version>4.1.2</version>
-	   </dependency>
-	   
-	   <dependency>
-	    <groupId>org.apache.httpcomponents</groupId>
-	    <artifactId>httpmime</artifactId>
-	    <version>4.1.2</version>
-	   </dependency>
-	   
-	   <dependency>
-	    <groupId>com.fatwire.wem.api</groupId>
-	    <artifactId>rest-api</artifactId>
-	    <version>11.1.1.8.0</version>
-	   </dependency>
-   
-   		<dependency>
-	    <groupId>com.fatwire.security</groupId>
-	    <artifactId>sites-security</artifactId>
-	    <version>11.1.1.8.0</version>
-	   </dependency>
-	   
-	    <dependency>
-	    <groupId>spring</groupId>
-	    <artifactId>spring</artifactId>
-	    <version>2.5.5</version>
-	   </dependency>
-	   
-	   <dependency>
-	    <groupId>com.fatwire.wem.sso</groupId>
-	    <artifactId>wem-sso-api</artifactId>
-	    <version>11.1.1.8.0</version>
-	   </dependency>
-	   
-	   <dependency>
-	    <groupId>com.fatwire.wem.sso.cas</groupId>
-	    <artifactId>wem-sso-api-cas</artifactId>
-	    <version>11.1.1.8.0</version>
-	   </dependency>
-	   
-	   	<dependency>
-	    <groupId>com.fatwire.wem.sso.oam</groupId>
-	    <artifactId>wem-sso-api-oam</artifactId>
-	    <version>11.1.1.8.0</version>
-	   </dependency>
-	   	<dependency>
-	    <groupId>j2ee</groupId>
-	    <artifactId>j2ee</artifactId>
-	    <version>1.4</version>
-	   </dependency>
 	   	<dependency>
 	   		<groupId>cs_workspace</groupId>
 	   		<artifactId>cs_workspace</artifactId>
@@ -239,11 +198,7 @@
     
     
     <modules>
-    	
-    	
-    	
-    	
-    	<module>../java_workspace</module>
+  	<module>../java_workspace</module>
     	<module>../static_workspace</module>
     	<module>../cs_workspace</module>
     </modules>
