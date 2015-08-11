@@ -10,6 +10,88 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+   <build>
+    
+    <plugins>
+      
+    <plugin>                                                         
+    <groupId>org.codehaus.gmaven</groupId>                       
+    <artifactId>groovy-maven-plugin</artifactId>                 
+    <version>2.0</version>                                       
+    <executions>                                                 
+        <execution>
+			<id>start-compile-java-classess</id>		
+            <phase>process-resources</phase>                              
+            <goals>                                              
+                <goal>execute</goal>                             
+            </goals>                                             
+            <configuration>                                      
+                <source>                                         
+                    log.info('\033[1;32m\033')
+                    log.info('\033[1;32m=============================================\033')
+                    log.info('\033[1;32mJava compilation has been started...!!!\033')
+                    log.info('\033[1;32m=============================================\033[0m')
+                </source>                                        
+            </configuration>                                     
+        </execution>
+
+		<execution>
+			<id>complete-compile-java-classess</id>		
+            <phase>process-classes</phase>                              
+            <goals>                                              
+                <goal>execute</goal>                             
+            </goals>                                             
+            <configuration>                                      
+                <source> 
+                    log.info('\033[1;32m\033')
+                    log.info('\033[1;32m=============================================\033')
+                    log.info('\033[1;32mJava compilation has been completed sucessfully...!!!\033')
+                    log.info('\033[1;32m=============================================\033[0m')
+
+                </source>                                        
+            </configuration>                                     
+        </execution>
+        
+        
+        <execution>
+			<id>start-build-jar</id>		
+            <phase>package</phase>                              
+            <goals>                                              
+                <goal>execute</goal>                             
+            </goals>                                             
+            <configuration>                                      
+                <source>                                         
+                    log.info('\033[1;32m\033')
+                    log.info('\033[1;32m=============================================\033')
+                    log.info('\033[1;32mBuilding jars have been started...!!!\033')
+                    log.info('\033[1;32m=============================================\033[0m')
+                </source>                                        
+            </configuration>                                     
+        </execution>
+
+		<execution>
+			<id>complete-build-jar</id>		
+            <phase>install</phase>                              
+            <goals>                                              
+                <goal>execute</goal>                             
+            </goals>                                             
+            <configuration>                                      
+                <source> 
+                    log.info('\033[1;32m\033')
+                    log.info('\033[1;32m=============================================\033')
+                    log.info('\033[1;32mBuilding jars have been completed sucessfully...!!!\033')
+                    log.info('\033[1;32m=============================================\033[0m')
+
+                </source>                                        
+            </configuration>                                     
+        </execution>    		
+    </executions>                                                
+</plugin>
+      
+    </plugins>
+     
+  </build>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
