@@ -31,9 +31,9 @@ public class CSDTClient extends CSDT {
 	private static void printmsg(String str){
 		
 		System.out.println("\033[1;32m\033");
-		System.out.println("\033[1;32m=============================================\033");
+		System.out.println("\033[1;32m[INFO] =============================================\033");
 		System.out.println("\033[1;32m"+str+"...!!!\033");
-		System.out.println("\033[1;32m=============================================\033[0m");
+		System.out.println("\033[1;32m[INFO] =============================================\033[0m");
 	}
 	
 }
