@@ -43,7 +43,7 @@
          </executions>  
          <configuration>  
            <includes>  
-             <include>**/*SimpleJBehave.java</include>  
+             <include>**/*WcsConfiguration.java</include>  
            </includes>  
          </configuration>  
        </plugin>
@@ -59,7 +59,7 @@
                     <configuration>  
 
                     <includes>  
-                        <include>**/*SimpleJBehave.java</include>  
+                        <include>**/*WcsConfiguration.java</include>  
                     </includes>  
                     <ignoreFailureInStories>false</ignoreFailureInStories>  
                     <ignoreFailureInView>false</ignoreFailureInView>  

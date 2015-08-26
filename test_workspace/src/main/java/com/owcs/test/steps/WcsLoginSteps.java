@@ -19,7 +19,7 @@ public class WcsLoginSteps extends Embedder {
 	
 @Given("user navigate to wcs login page <url>")
 public void userloginwcs(@Named("url") String wcsUrl) throws InterruptedException {
-	System.setProperty("webdriver.chrome.driver", "G:/script/software/chromedriver_win32/chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", "G:/software/chromedriver_win32/chromedriver_win32/chromedriver.exe");
 	driver = new ChromeDriver();
 	driver.get(wcsUrl);
 	//Thread.sleep(20000);
