@@ -1,10 +1,10 @@
  
-Scenario:  Login into WCS and verify Homepage
+Scenario:  Login into WCS and verify logout message
  
 Given user navigate to wcs login page <url>
 When user enter <username> and <password> in loginpage
 Then user click the Login button
-Then user should be in wcs homepage
+Then user should be able to see logout message
 
 Examples:
 |url|username|password|

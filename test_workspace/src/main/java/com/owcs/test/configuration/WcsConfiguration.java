@@ -24,7 +24,7 @@ public class WcsConfiguration extends JUnitStory {
 			System.out.println("####"+System.getProperty("user.dir")+"+++++");
 			
 			storyURL = new URL("file://G:/automation/Sites/11.1.1.8.0/export/envision/test_workspace/src/main/java/");
-			System.out.println(storyURL);
+			System.out.println("check stories"+storyURL);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}

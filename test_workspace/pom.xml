@@ -1,6 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ 
+<modelVersion>4.0.0</modelVersion>
 
   <groupId>com.owcs.test</groupId>
   <artifactId>test_workspace</artifactId>
@@ -13,98 +16,95 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  
+ 
   <build>
-    <pluginManagement>
-      <plugins>
-
+    <plugins>
       <plugin>
-      <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        <compilerArgument></compilerArgument>
-          </configuration>
-      </plugin>
-
-       <plugin>  
-         <groupId>org.apache.maven.plugins</groupId>  
-         <artifactId>maven-failsafe-plugin</artifactId>  
-         <version>${failsafe.and.surefire.version}</version>  
-         <executions>  
-           <execution>  
-             <id>integration-test</id>  
-             <goals>  
-               <goal>integration-test</goal>  
-               <goal>verify</goal>  
-             </goals>  
-           </execution>  
-         </executions>  
-         <configuration>  
-           <includes>  
-             <include>**/*WcsConfiguration.java</include>  
-           </includes>  
-         </configuration>  
-       </plugin>
-
-       <plugin>
         <groupId>org.jbehave</groupId>
         <artifactId>jbehave-maven-plugin</artifactId>
-        <version>4.0.2</version>
-            <executions>  
-                <execution>  
-                    <id>run-stories-as-embeddables</id>  
-                    <phase>integration-test</phase>  
-                    <configuration>  
-
-                    <includes>  
-                        <include>**/*WcsConfiguration.java</include>  
-                    </includes>  
-                    <ignoreFailureInStories>false</ignoreFailureInStories>  
-                    <ignoreFailureInView>false</ignoreFailureInView>  
-
-                        <systemProperties>
-                            <property>
-                                <name>java.awt.headless</name>
-                                <value>true</value>
-                            </property>
-                        </systemProperties>
-
-
-                    </configuration>  
-                    <goals>  
-                    <goal>run-stories-as-embeddables</goal>  
-                    </goals>  
-            </execution>  
-             </executions>
-       </plugin>
-
-      </plugins>
-    </pluginManagement>
+        <version>3.1.2</version>
+        <executions>
+          <execution>
+            <id>run-stories-as-embeddables</id>
+            <phase>integration-test</phase>
+            <configuration>
+              <includes>
+                <include>**/*WcsConfiguration.java</include>
+              </includes>
+              <ignoreFailureInStories>true</ignoreFailureInStories>
+              <ignoreFailureInView>false</ignoreFailureInView>
+           </configuration>
+           <goals>
+              <goal>run-stories-as-embeddables</goal>
+           </goals>
+         </execution>
+       </executions>
+     </plugin>
+     
+      <plugin> 
+       <groupId>org.apache.maven.plugins</groupId> 
+       <artifactId>maven-dependency-plugin</artifactId> 
+       <executions> 
+         <execution> 
+            <id>unpack-jbehave-site-resources</id>
+            <phase>generate-resources</phase> 
+            <goals> 
+               <goal>unpack</goal> 
+            </goals> 
+            <configuration> 
+               <overwriteReleases>false</overwriteReleases> 
+               <overwriteSnapshots>true</overwriteSnapshots> 
+               <artifactItems> 
+                  <artifactItem> 
+                     <groupId>org.jbehave.site</groupId> 
+                     <artifactId>jbehave-site-resources</artifactId> 
+                     <version>3.1.1</version> 
+                     <type>zip</type>
+                     <outputDirectory> ${project.build.directory}/jbehave/view</outputDirectory> 
+                   </artifactItem> 
+                </artifactItems> 
+            </configuration> 
+         </execution> 
+         <execution> 
+            <id>unpack-jbehave-reports-resources</id>
+            <phase>generate-resources</phase> 
+            <goals> 
+               <goal>unpack</goal> 
+            </goals> 
+            <configuration> 
+              <overwriteReleases>false</overwriteReleases> 
+              <overwriteSnapshots>true</overwriteSnapshots> 
+              <artifactItems> 
+                 <artifactItem> 
+                   <groupId>org.jbehave</groupId> 
+                   <artifactId>jbehave-core</artifactId> 
+                   <version>3.1.2</version> 
+                   <outputDirectory>${project.build.directory}/jbehave/view</outputDirectory> 
+                   <includes>**\/*.css,**\/*.ftl,**\/*.js</includes> 
+                 </artifactItem> 
+               </artifactItems> 
+             </configuration> 
+           </execution> 
+         </executions> 
+       </plugin>		
+     </plugins>
   </build>
-
-  <dependencies>
   
+   <dependencies>
+    <dependency>
+      <groupId>org.jbehave</groupId>
+      <artifactId>jbehave-core</artifactId>
+      <version>3.1.2</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
+      <version>4.4</version>
     </dependency>
-
-
-    <dependency>
-        <groupId>org.jbehave</groupId>
-        <artifactId>jbehave-core</artifactId>
-        <version>4.0.2</version>
-    </dependency>
-    
- <dependency>
-<groupId>org.seleniumhq.selenium</groupId>
-<artifactId>selenium-java</artifactId>
-<version>2.40.0</version>
-</dependency>
-    
+	<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-java</artifactId>
+	<version>2.40.0</version>
+	</dependency>
   </dependencies>
 </project>

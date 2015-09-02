@@ -1,12 +1,12 @@
 package com.owcs.test.steps;
 
-import junit.framework.Assert;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.jbehave.core.embedder.Embedder;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,6 +16,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class WcsLoginSteps extends Embedder {
 
 	static ChromeDriver driver;
+	
+	//private By outerIFrameLoc = By.xpath("//div[@id='frame1']/iframe");
+	//private By innerIFrameLoc = By.xpath("//iframe[contains(@id,'contentPane_view')]");
 	
 @Given("user navigate to wcs login page <url>")
 public void userloginwcs(@Named("url") String wcsUrl) throws InterruptedException {
@@ -45,10 +48,16 @@ public void userclickbutton() throws InterruptedException {
 	
 }
 
-@Then("user should be in wcs homepage")
-public void userisinhomepage() {
-	Boolean isTrue = driver.findElementByXPath("//span[contains(@text,'Logout')]").isDisplayed();
-	Assert.assertTrue(isTrue);
+
+
+@Then("user should be able to see logout message")
+public void logoutmessage() throws Exception {
+//	driver.switchTo().frame(driver.findElement(outerIFrameLoc));
+	Thread.sleep(10000);
+	System.out.println("Lo      "+driver.findElementByXPath("//span[text()='Logout']").getText());
+//	Boolean isTrue = driver.findElementByXPath(".//*[@id='fw_ui_dijit_Button_0_label']").isDisplayed();
+	
+	Assert.assertTrue("User is not able to see logout message", driver.findElementByXPath("//span[text()='Logout']").getText().equals("Logout"));
 	
 	
 }
