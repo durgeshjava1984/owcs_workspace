@@ -11,7 +11,7 @@
 <body class="home">
 	<div id="main">
 		<div id="header">
-		test automation !!!
+		test automation !!!$$$$
 			<render:satellitepage pagename="avisports/navbar" />
 		</div>
 		<div id="container">
