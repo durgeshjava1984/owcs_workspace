@@ -17,6 +17,7 @@
 		<div id="container">
 			<div class="content">
 				<div class="banner">
+				<h1 align="center"> test automation</h1>
 					<render:calltemplate tname="Banner/Home2" args="c,cid" style="element" />
 				</div>
 			</div>
